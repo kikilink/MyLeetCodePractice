@@ -21,6 +21,7 @@ public class MaxHeap<E extends Comparable<E>> {
 			this.data.add(copy[i]);
 		}
 
+		// 从存在叶子节点的节点开始，下沉即可，这也叫堆化。
 		for (int i = parent(data.size() - 1); i >= 0; i++) {
 			shiftDown(i);
 		}
