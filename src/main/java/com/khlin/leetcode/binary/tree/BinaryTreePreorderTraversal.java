@@ -2,9 +2,7 @@ package com.khlin.leetcode.binary.tree;
 
 import com.khlin.leetcode.binary.tree.helper.TreeNode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 二叉树的前序遍历
@@ -34,6 +32,35 @@ public class BinaryTreePreorderTraversal {
 			list.add(root.val);
 			preorderTraversal(root.left, list);
 			preorderTraversal(root.right, list);
+		}
+
+		/**
+		 * 非递归的实现
+		 * 
+		 * @param root
+		 * @return
+		 */
+		public List<Integer> preorderTraversalNR(TreeNode root) {
+			if (null == root) {
+				return Collections.emptyList();
+			}
+			List<Integer> list = new LinkedList<>();
+			Stack<TreeNode> stack = new Stack<>();
+			stack.push(root);
+			while (!stack.isEmpty()) {
+				TreeNode top = stack.pop();
+				list.add(top.val);
+
+				if (null != top.right) {
+					stack.push(top.right);
+				}
+
+				if (null != top.left) {
+					stack.push(top.left);
+				}
+			}
+
+			return list;
 		}
 	}
 }
