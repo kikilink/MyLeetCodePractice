@@ -38,16 +38,28 @@ public class BinaryTreeInorderTraversal {
 
 			List<Integer> list = new ArrayList<>();
 
-			while (null != cursor || !stack.isEmpty()) {
-				if (null != cursor) {
+			do {
+				while (null != cursor) {
 					stack.push(cursor);
 					cursor = cursor.left;
-				} else {// 表示栈不空
+				}
+
+				if (!stack.isEmpty()) {
 					TreeNode midNode = stack.pop();
 					list.add(midNode.val);
-					cursor = midNode.right;
+					cursor = cursor.right;
 				}
-			}
+			} while (!stack.isEmpty() || !stack.isEmpty());
+			// while (null != cursor || !stack.isEmpty()) {
+			// if (null != cursor) {
+			// stack.push(cursor);
+			// cursor = cursor.left;
+			// } else {// 表示栈不空
+			// TreeNode midNode = stack.pop();
+			// list.add(midNode.val);
+			// cursor = midNode.right;
+			// }
+			// }
 
 			return list;
 		}
