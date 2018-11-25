@@ -47,9 +47,9 @@ public class BinaryTreeInorderTraversal {
 				if (!stack.isEmpty()) {
 					TreeNode midNode = stack.pop();
 					list.add(midNode.val);
-					cursor = cursor.right;
+					cursor = midNode.right;
 				}
-			} while (!stack.isEmpty() || !stack.isEmpty());
+			} while (!stack.isEmpty() || null != cursor);
 			// while (null != cursor || !stack.isEmpty()) {
 			// if (null != cursor) {
 			// stack.push(cursor);
