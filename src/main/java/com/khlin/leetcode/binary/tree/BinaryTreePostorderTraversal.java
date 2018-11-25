@@ -54,14 +54,14 @@ public class BinaryTreePostorderTraversal {
 				}
 
 				while (!stack.isEmpty()) {
-					PostTreeNode postTreeNode = stack.pop();
+					PostTreeNode postTreeNode = stack.peek();
 					// 右子树已经访问了，可以处理当前节点
 					if (postTreeNode.rightVisited) {
 						list.add(postTreeNode.treeNode.val);
+						stack.pop();
 					} else {// 否则继续访问右子树
 						cursor = postTreeNode.treeNode.right;
 						postTreeNode.rightVisited = true;
-						stack.push(postTreeNode);
 						break;
 					}
 				}
